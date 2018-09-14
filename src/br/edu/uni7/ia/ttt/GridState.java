@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import br.edu.uni7.ia.ttt.GridResult.GameState;
-import br.edu.uni7.ia.ttt.GridResult.GameStateLine;
 import br.edu.uni7.ia.util.Position;
 
 public class GridState {
@@ -85,7 +83,7 @@ public class GridState {
 			result = new GridResult(GameState.O_WON, GameStateLine.ASCENDING_DIAGONAL);
 		}
 
-		// Conferindo se o jogo empatou ou não terminou
+		// Conferindo se o jogo empatou ou nï¿½o terminou
 		if (result == null) {
 			for (int y = 0; y < tableSize(); y++) {
 				for (int x = 0; x < tableSize(); x++) {
@@ -130,7 +128,7 @@ public class GridState {
 	}
 
 	public GridState getDerivatedState(Position position, int symbol) {
-		// TODO Validar se x, y e symbol estão dentro dos valores aceitos
+		// TODO Validar se x, y e symbol estï¿½o dentro dos valores aceitos
 		GridState derivated = clone();
 		derivated.state[position.y][position.x] = symbol;
 		return derivated;

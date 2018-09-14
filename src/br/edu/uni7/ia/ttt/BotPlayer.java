@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.edu.uni7.ia.ttt.GridResult.GameState;
 import br.edu.uni7.ia.util.Node;
 import br.edu.uni7.ia.util.Position;
 
@@ -35,7 +34,7 @@ public class BotPlayer implements Player {
 			if (currentNode != null) {
 				List<Node<GridState>> children = currentNode.getChildren();
 
-				// Valores iniciais de comparação
+				// Valores iniciais de comparaï¿½ï¿½o
 				float choosenStateLossChance = 0f;
 				float choosenStateWinChance = 0f;
 				float choosenStateDrawChance = 0f;
@@ -56,7 +55,7 @@ public class BotPlayer implements Player {
 //							choosenStateLossChance = childChance.lossChance;
 //							choosenStateWinChance = childChance.winChance;
 //							choosenStateDrawChance = childChance.drawChance;
-//							// Após escolhe o caminho com mais vitórias
+//							// Apï¿½s escolhe o caminho com mais vitï¿½rias
 //						}
 						
 						// Primeiro escolhe o caminho de menos derrotas
@@ -66,7 +65,7 @@ public class BotPlayer implements Player {
 							choosenStateLossChance = childChance.lossChance;
 							choosenStateWinChance = childChance.winChance;
 							choosenStateDrawChance = childChance.drawChance;
-							// Após escolhe o caminho com mais vitórias
+							// Apï¿½s escolhe o caminho com mais vitï¿½rias
 						} else if (childChance.lossChance == choosenStateLossChance
 								&& childChance.winChance > choosenStateWinChance) {
 							choosenState = child.getData();
@@ -77,13 +76,13 @@ public class BotPlayer implements Player {
 						}
 					}
 				}
-				System.out.println("Possibilidade do estado: vitória=" + choosenStateWinChance + "% empate="
+				System.out.println("Possibilidade do estado: vitï¿½ria=" + choosenStateWinChance + "% empate="
 						+ choosenStateDrawChance + "% derrota=" + choosenStateLossChance + "%");
 			} else {
-				// TODO tratar para erro onde o estado atual não se encontra na árvore
+				// TODO tratar para erro onde o estado atual nï¿½o se encontra na ï¿½rvore
 			}
 		} else {
-			// TODO Tratar quando o jogo já está finalizado
+			// TODO Tratar quando o jogo jï¿½ estï¿½ finalizado
 		}
 		return choosenState;
 	}
@@ -111,20 +110,20 @@ public class BotPlayer implements Player {
 	private void generateTree() {
 		int symbol = botSymbol;
 		if (!startPlayer) {
-			// Para gerar a árvore do segundo jogador
+			// Para gerar a ï¿½rvore do segundo jogador
 			symbol = flipSymbol(botSymbol);
 		}
 
 		generateSubNodes(rootNode, symbol);
 	}
 
-	// Retorna a chance daquele nó ganhar o jogo
+	// Retorna a chance daquele nï¿½ ganhar o jogo
 	private StateChance generateSubNodes(Node<GridState> node, int symbol) {
 		GridState nodeState = node.getData();
 
 		StateChance stateChance = null;
 
-		if (nodeState.getGridResult().getGameState().equals(GridResult.GameState.NOT_FINISHED)) {
+		if (nodeState.getGridResult().getGameState().equals(GameState.NOT_FINISHED)) {
 			List<Position> emptyPositions = nodeState.getEmptyPositionList();
 
 			int otherSymbol = flipSymbol(symbol);
@@ -143,7 +142,7 @@ public class BotPlayer implements Player {
 				node.addChild(newNode);
 				
 				// Se estado final
-				if (!nodeState.getGridResult().getGameState().equals(GridResult.GameState.NOT_FINISHED)) {
+				if (!nodeState.getGridResult().getGameState().equals(GameState.NOT_FINISHED)) {
 					if (nodeState.getGridResult().getGameState().getWinnerValue() == botSymbol) {
 						// Em caso de vitoria
 						iWon = true;
@@ -192,7 +191,7 @@ public class BotPlayer implements Player {
 				// Em caso de derrotz
 				stateChance = new StateChance(0f, 0f, 100f);
 			}
-//			stateChances; // TODO chance do estado atual. acima é a chance dos filhos
+//			stateChances; // TODO chance do estado atual. acima ï¿½ a chance dos filhos
 		}
 		stateChances.put(nodeState, stateChance);
 		return stateChance;

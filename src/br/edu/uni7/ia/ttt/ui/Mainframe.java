@@ -20,8 +20,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import br.edu.uni7.ia.ttt.BotPlayer;
+import br.edu.uni7.ia.ttt.GameState;
 import br.edu.uni7.ia.ttt.GridResult;
-import br.edu.uni7.ia.ttt.GridResult.GameState;
 import br.edu.uni7.ia.ttt.GridState;
 import br.edu.uni7.ia.ttt.Player;
 import br.edu.uni7.ia.util.Position;
@@ -86,7 +86,7 @@ public class Mainframe extends JFrame {
 			players[1] = botPlayer2;
 		} else {
 			if (currentHumanFirst) {
-				// Quando nulo, é o humano
+				// Quando nulo, ï¿½ o humano
 				// TODO criar classe para representar o humano
 				players[0] = humanPlayer;
 				humanPlayer.setSymbol(PLAYER_1);
@@ -121,7 +121,7 @@ public class Mainframe extends JFrame {
 								JOptionPane.INFORMATION_MESSAGE);
 					} else {
 						JOptionPane.showMessageDialog(this,
-								"O jogador " + currentPlayer + " de símbolo "
+								"O jogador " + currentPlayer + " de sï¿½mbolo "
 										+ currentState.getGridResult().getGameState().getWinnerSymbol() + " ganhou!",
 								"Fim de jogo", JOptionPane.INFORMATION_MESSAGE);
 						
@@ -132,7 +132,7 @@ public class Mainframe extends JFrame {
 				}
 			}
 
-			// Passa para o próximo
+			// Passa para o prï¿½ximo
 			if (currentPlayer == 0) {
 				currentPlayer = 1;
 			} else {
@@ -157,7 +157,7 @@ public class Mainframe extends JFrame {
 			this.currentState = currentState;
 			enableAvailableButtons(currentState);
 			try {
-				// Esperando pela jogada nos botões
+				// Esperando pela jogada nos botï¿½es
 				sem.acquire();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -171,7 +171,7 @@ public class Mainframe extends JFrame {
 		public void enableAvailableButtons(GridState currentState) {
 			for (int y = 0; y < buttonGrid.length; y++) {
 				for (int x = 0; x < buttonGrid.length; x++) {
-					// Habilitando botões onde estados são vazios
+					// Habilitando botï¿½es onde estados sï¿½o vazios
 					buttonGrid[y][x].setEnabled(currentState.getState()[y][x] == GridState.E);
 				}
 			}
@@ -180,7 +180,7 @@ public class Mainframe extends JFrame {
 		public void disableAllButtons() {
 			for (int y = 0; y < buttonGrid.length; y++) {
 				for (int x = 0; x < buttonGrid.length; x++) {
-					// Habilitando botões onde estados são vazios
+					// Habilitando botï¿½es onde estados sï¿½o vazios
 					buttonGrid[y][x].setEnabled(false);
 				}
 			}
@@ -210,10 +210,10 @@ public class Mainframe extends JFrame {
 		}
 	}
 
-	// Se retornar true, então é bot vs bot. Caso contrário é bot vs humano
+	// Se retornar true, entï¿½o ï¿½ bot vs bot. Caso contrï¿½rio ï¿½ bot vs humano
 	private boolean showBotOrHumanDialog() {
 		Object[] options = { "Bot vs Bot", "Humano vs Bot" };
-		int response = JOptionPane.showOptionDialog(this, "Quais deverão ser o jogador desafiante?", "Bot ou humano?",
+		int response = JOptionPane.showOptionDialog(this, "Quais deverï¿½o ser o jogador desafiante?", "Bot ou humano?",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 		if (response == 0) {
 			return true;
@@ -222,8 +222,8 @@ public class Mainframe extends JFrame {
 	}
 
 	private boolean showFirstHumanDialog() {
-		Object[] options = { "Sim", "Não" };
-		int response = JOptionPane.showOptionDialog(this, "O humano deve jogar primeiro?", "Quem começa?",
+		Object[] options = { "Sim", "Nï¿½o" };
+		int response = JOptionPane.showOptionDialog(this, "O humano deve jogar primeiro?", "Quem comeï¿½a?",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
 		if (response == 0) {
